@@ -13,11 +13,15 @@ def get_user_float_num():
     return userfloatnum
 
 
+def wellcome():
+    tkinter.messagebox.showinfo('Currency Converter', 'Wellcome to Currency Converter')
+
+
 # define the user's options to continue or exit
 def get_user_yesno():
     option = tkinter.messagebox.askyesno(
         title='Currency Converter',
-        message='Wellcome to Currency Converter\nDo you want to proceed?',
+        message='Do you want to proceed?',
         default=tkinter.messagebox.YES
     )
     # Continue if YES
