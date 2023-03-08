@@ -106,7 +106,7 @@ def what_to_convert():
 def ils_to_usd():
     value_to_convert = get_user_float_num()
     Result = value_to_convert / get_curr_ils_rate()
-    log_to_file(f'USer Converted {value_to_convert} ILS to {round(Result, 4)} USD\nWith exchange rate of {get_curr_ils_rate()}')
+    log_to_file(f'USer Converted {value_to_convert} ILS to {round(Result, 4)} USD With exchange rate of {get_curr_ils_rate()}')
     messagebox.showinfo('Success!', f'You successfully converted {value_to_convert} ILS to {round(Result, 4)} USD\nWith exchange rate of {get_curr_ils_rate()}')
     get_user_yesno()
 
@@ -114,7 +114,7 @@ def ils_to_usd():
 def ils_to_eur():
     value_to_convert = get_user_float_num()
     Result = value_to_convert / (get_curr_ils_rate() / get_curr_eur_rate())
-    log_to_file(f'USer Converted {value_to_convert} ILS to {round(Result, 4)} EUR\nWith exchange rate of {get_curr_eur_rate()}')
+    log_to_file(f'USer Converted {value_to_convert} ILS to {round(Result, 4)} EUR With exchange rate of {get_curr_eur_rate()}')
     messagebox.showinfo('Success!', f'You successfully converted {value_to_convert} ILS to {round(Result, 4)}EUR\nWith exchange rate of {get_curr_eur_rate()}')
     get_user_yesno()
 
@@ -122,7 +122,7 @@ def ils_to_eur():
 def usd_to_ils():
     value_to_convert = get_user_float_num()
     Result = value_to_convert * get_curr_ils_rate()
-    log_to_file(f'USer Converted {value_to_convert} USD to {round(Result, 4)} ILS\nWith exchange rate of {get_curr_ils_rate()}')
+    log_to_file(f'USer Converted {value_to_convert} USD to {round(Result, 4)} ILS With exchange rate of {get_curr_ils_rate()}')
     messagebox.showinfo('Success!', f'You successfully converted {value_to_convert} USD to {round(Result, 4)} ILS\nWith exchange rate of {get_curr_ils_rate()}')
     get_user_yesno()
 
@@ -130,7 +130,7 @@ def usd_to_ils():
 def eur_to_usd():
     value_to_convert = get_user_float_num()
     Result = value_to_convert * (get_curr_usd_rate() / get_curr_eur_rate())
-    log_to_file(f'USer Converted {value_to_convert} EUR to {round(Result, 4)} USD\nWith exchange rate of {get_curr_usd_rate()}')
+    log_to_file(f'USer Converted {value_to_convert} EUR to {round(Result, 4)} USD With exchange rate of {get_curr_usd_rate()}')
     messagebox.showinfo('Success!', f'You successfully converted {value_to_convert} EUR to {round(Result, 4)} USD\nWith exchange rate of {get_curr_usd_rate()}')
     get_user_yesno()
 
@@ -138,6 +138,6 @@ def eur_to_usd():
 def eur_to_ils():
     value_to_convert = get_user_float_num()
     Result = value_to_convert * (get_curr_ils_rate() / get_curr_eur_rate())
-    log_to_file(f'USer Converted {value_to_convert} EUR to {round(Result, 4)} ILS\nWith exchange rate of {get_curr_ils_rate()}')
+    log_to_file(f'USer Converted {value_to_convert} EUR to {round(Result, 4)} ILS With exchange rate of {get_curr_ils_rate()}')
     messagebox.showinfo('Success!', f'You successfully converted {value_to_convert} EUR to {round(Result, 4)} ILS\nWith exchange rate of {get_curr_ils_rate()}')
     get_user_yesno()
