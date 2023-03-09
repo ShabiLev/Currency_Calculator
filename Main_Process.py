@@ -53,8 +53,8 @@ def what_to_convert():
     font = ('times', 14, 'bold')
     message.title('What would you like to convert?')
 
-    w = 350  # width for the Tk root
-    h = 300  # height for the Tk root
+    w = 420  # width for the Tk root
+    h = 360  # height for the Tk root
 
     # get screen width and height
     ws = message.winfo_screenwidth()  # width of the screen
@@ -71,40 +71,47 @@ def what_to_convert():
     message.attributes('-topmost', False)
 
     # Define the buttons
+    rates_table = tkinter.Text(message, height=2, width=20, font=font, background='#8acade')
+    rates_table.grid(row=0, column=0, padx=20, pady=10)
+    onenis = round((1 / get_curr_ils_rate()), 4)
+    rates_table.insert(INSERT, f"1 NIS = {onenis} USD\n1 NIS = {round((onenis / (1 / get_curr_eur_rate())), 4)} EUR")
+
     button1 = tk.Button(message,
                         text='ILS To USD',
                         font=font,
                         command=lambda: [f() for f in [message.destroy, ils_to_usd]])
-    button1.grid(row=0, column=0, padx=3, pady=30)
+    button1.grid(row=1, column=0, padx=10, pady=10)
 
     button2 = tk.Button(message,
                         text='ILS To EUR',
                         font=font,
                         command=lambda: [f() for f in [message.destroy, ils_to_eur]])
-    button2.grid(row=0, column=1, padx=3, pady=30)
+    button2.grid(row=1, column=1, padx=10, pady=10)
 
     button3 = tk.Button(message,
                         text='USD To ILS',
                         font=font,
                         command=lambda: [f() for f in [message.destroy, usd_to_ils]])
-    button3.grid(row=1, column=0, padx=3, pady=30)
+    button3.grid(row=2, column=0, padx=10, pady=10)
 
     button4 = tk.Button(message,
                         text='ILS To EUR',
                         font=font,
                         command=lambda: [f() for f in [message.destroy, eur_to_usd]])
-    button4.grid(row=2, column=0, padx=3, pady=30)
+    button4.grid(row=3, column=0, padx=10, pady=10)
 
     button5 = tk.Button(message,
                         text='EUR To ILS',
                         font=font,
                         command=lambda: [f() for f in [message.destroy, eur_to_ils]])
-    button5.grid(row=2, column=1, padx=3, pady=30)
+    button5.grid(row=3, column=1, padx=20, pady=10)
 
-    rates_table = tkinter.Text(message, height=2, width=20, font=font)
-    rates_table.grid(row=1, column=1, padx=1, pady=10)
-    onenis = round((1 / get_curr_ils_rate()), 4)
-    rates_table.insert(INSERT, f"1 NIS = {onenis} USD\n1 NIS = {round((onenis / (1/ get_curr_eur_rate())), 4)} EUR")
+    clear_log_button = tk.Button(message,
+                                 text='Clear Log File',
+                                 font=font,
+                                 background='red',
+                                 command=lambda: [f() for f in [clear_log()]])
+    clear_log_button.grid(row=4, column=0, padx=10, pady=30)
 
     message.mainloop()
 

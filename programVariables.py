@@ -23,6 +23,10 @@ def open_log():
     os.system('notepad.exe ' + logfilePath)
 
 
+def clear_log():
+    open(logfilePath, 'w').close()
+
+
 def get_rates():
     api_key = "96753c12b86447d2932b6502c72e36a8"
     url = f"https://openexchangerates.org/api/latest.json?app_id={api_key}"
