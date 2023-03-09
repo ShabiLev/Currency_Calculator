@@ -1,9 +1,11 @@
 import time
 import tkinter
+from typing import Text
+
 from programVariables import *
 import tkinter as tk
 import tkinter.simpledialog
-from tkinter import messagebox
+from tkinter import messagebox, NORMAL, INSERT
 
 
 # get the user's inout for amount if currency to convert
@@ -99,6 +101,11 @@ def what_to_convert():
                         command=lambda: [f() for f in [message.destroy, eur_to_ils]])
     button5.grid(row=2, column=1, padx=3, pady=30)
 
+    rates_table = tkinter.Text(message, height=2, width=20, font=font)
+    rates_table.grid(row=1, column=1, padx=1, pady=10)
+    onenis = round((1 / get_curr_ils_rate()), 4)
+    rates_table.insert(INSERT, f"1 NIS = {onenis} USD\n1 NIS = {round((onenis / (1/ get_curr_eur_rate())), 4)} EUR")
+
     message.mainloop()
 
 
@@ -106,38 +113,48 @@ def what_to_convert():
 def ils_to_usd():
     value_to_convert = get_user_float_num()
     Result = value_to_convert / get_curr_ils_rate()
-    log_to_file(f'USer Converted {value_to_convert} ILS to {round(Result, 4)} USD With exchange rate of {get_curr_ils_rate()}')
-    messagebox.showinfo('Success!', f'You successfully converted {value_to_convert} ILS to {round(Result, 4)} USD\nWith exchange rate of {get_curr_ils_rate()}')
+    log_to_file(
+        f'USer Converted {value_to_convert} ILS to {round(Result, 4)} USD With exchange rate of {get_curr_ils_rate()}')
+    messagebox.showinfo('Success!',
+                        f'You successfully converted {value_to_convert} ILS to {round(Result, 4)} USD\nWith exchange rate of {get_curr_ils_rate()}')
     get_user_yesno()
 
 
 def ils_to_eur():
     value_to_convert = get_user_float_num()
     Result = value_to_convert / (get_curr_ils_rate() / get_curr_eur_rate())
-    log_to_file(f'USer Converted {value_to_convert} ILS to {round(Result, 4)} EUR With exchange rate of {get_curr_eur_rate()}')
-    messagebox.showinfo('Success!', f'You successfully converted {value_to_convert} ILS to {round(Result, 4)}EUR\nWith exchange rate of {get_curr_eur_rate()}')
+    log_to_file(
+        f'USer Converted {value_to_convert} ILS to {round(Result, 4)} EUR With exchange rate of {get_curr_eur_rate()}')
+    messagebox.showinfo('Success!',
+                        f'You successfully converted {value_to_convert} ILS to {round(Result, 4)}EUR\nWith exchange rate of {get_curr_eur_rate()}')
     get_user_yesno()
 
 
 def usd_to_ils():
     value_to_convert = get_user_float_num()
     Result = value_to_convert * get_curr_ils_rate()
-    log_to_file(f'USer Converted {value_to_convert} USD to {round(Result, 4)} ILS With exchange rate of {get_curr_ils_rate()}')
-    messagebox.showinfo('Success!', f'You successfully converted {value_to_convert} USD to {round(Result, 4)} ILS\nWith exchange rate of {get_curr_ils_rate()}')
+    log_to_file(
+        f'USer Converted {value_to_convert} USD to {round(Result, 4)} ILS With exchange rate of {get_curr_ils_rate()}')
+    messagebox.showinfo('Success!',
+                        f'You successfully converted {value_to_convert} USD to {round(Result, 4)} ILS\nWith exchange rate of {get_curr_ils_rate()}')
     get_user_yesno()
 
 
 def eur_to_usd():
     value_to_convert = get_user_float_num()
     Result = value_to_convert * (get_curr_usd_rate() / get_curr_eur_rate())
-    log_to_file(f'USer Converted {value_to_convert} EUR to {round(Result, 4)} USD With exchange rate of {get_curr_usd_rate()}')
-    messagebox.showinfo('Success!', f'You successfully converted {value_to_convert} EUR to {round(Result, 4)} USD\nWith exchange rate of {get_curr_usd_rate()}')
+    log_to_file(
+        f'USer Converted {value_to_convert} EUR to {round(Result, 4)} USD With exchange rate of {get_curr_usd_rate()}')
+    messagebox.showinfo('Success!',
+                        f'You successfully converted {value_to_convert} EUR to {round(Result, 4)} USD\nWith exchange rate of {get_curr_usd_rate()}')
     get_user_yesno()
 
 
 def eur_to_ils():
     value_to_convert = get_user_float_num()
     Result = value_to_convert * (get_curr_ils_rate() / get_curr_eur_rate())
-    log_to_file(f'USer Converted {value_to_convert} EUR to {round(Result, 4)} ILS With exchange rate of {get_curr_ils_rate()}')
-    messagebox.showinfo('Success!', f'You successfully converted {value_to_convert} EUR to {round(Result, 4)} ILS\nWith exchange rate of {get_curr_ils_rate()}')
+    log_to_file(
+        f'USer Converted {value_to_convert} EUR to {round(Result, 4)} ILS With exchange rate of {get_curr_ils_rate()}')
+    messagebox.showinfo('Success!',
+                        f'You successfully converted {value_to_convert} EUR to {round(Result, 4)} ILS\nWith exchange rate of {get_curr_ils_rate()}')
     get_user_yesno()
